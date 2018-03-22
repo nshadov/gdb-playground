@@ -1,0 +1,17 @@
+version: '3'
+services:
+  gdb:
+    container_name: gdb
+    build:
+        context: ./dockerfile
+        dockerfile: Dockerfile
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined
+    stdin_open: true
+    tty: true
+
+
+# docker-compose exec gdb bash
